@@ -27,7 +27,6 @@ const MemeSelector: React.FC<MemeProps> = (props) => {
         props.onSelect(meme)
     }
 
-    console.log("data", memes)
 
     return (
         <>
@@ -42,7 +41,6 @@ const MemeSelector: React.FC<MemeProps> = (props) => {
                 justifyContent={'center'}
             >
                 {memesList?.map((meme, index) => {
-                         console.log(meme.name)
                     return (
                         <Pressable
                             key={index}
@@ -50,11 +48,13 @@ const MemeSelector: React.FC<MemeProps> = (props) => {
                             onPress={() => memeSelected(meme)}
                             shadow="2"
                         >
-                          <Text style={{color:'black'}} >{meme.name}</Text>  
+                          {/* <Text style={{color:'black'}} >{meme.name}</Text>   */}
                             <Image
                                 alt="Meme"
                                 source={{uri: meme.image}}
                                 size={'lg'}
+                                borderRadius={20}
+                                borderColor={'pink.500'}
                                 // style={{ width: '100%', height: 180, borderRadius: 20 }}
                                 borderWidth={props.activeMeme === meme.name ? 4 : 0}
                             />

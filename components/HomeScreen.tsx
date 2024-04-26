@@ -57,12 +57,14 @@ const HomeScreen = ({ navigation }: RouterProps) => {
                         {
                             memes?.map((meme, index) => {
                                 return (
-                                    <Box key={index} p={4} >
-                                        <Text>{meme.title}</Text>
+                                    <Box key={index} p={4} backgroundColor='pink.100' >
+
                                         <Image
 
                                             source={{ uri: meme.url }}
-                                            style={{ width: '100%', height: 150, borderRadius: 20 }}></Image>
+                                            style={{ width: '100%', height: 150, borderRadius: 20, }}></Image>
+
+                                        <Text style={{fontSize: 16 , paddingTop: 16}} >{meme.title}</Text>
                                     </Box>
 
                                 )

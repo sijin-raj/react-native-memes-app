@@ -50,22 +50,40 @@ export const useApi = () => {
 
     const getMemes = async (): Promise<Meme[]> => {
         return new Promise((resolve, reject) => {
-          let result: Meme[] = [];
-    
-          Object.entries(memesList).forEach(([key, value]) => {
-            console.log(value)
+            let result: Meme[] = [];
 
-            result.push({
-              name:key,
-              image: value
+            Object.entries(memesList).forEach(([key, value]) => {
+                result.push({
+                    name: key,
+                    image: value
+                })
             })
-          })
-          resolve(result)
+            resolve(result)
         })
-      }
+    }
+
+
+    const createMeme = async (top: string, bottom: string, meme: string): Promise<any> => {
+        return axios.get(`https://ronreiter-meme-generator.p.rapidapi.com/meme`, {
+            params: { top, bottom, meme }, headers: {
+                'X-RapidAPI-Key': 'b5f1d10d7amsh22036d987889f4ap19e097jsn05adc8a2cd5b',
+                'X-RapidAPI-Host': 'ronreiter-meme-generator.p.rapidapi.com'
+            }, responseType: 'blob'
+        })
+
+
+        // return new Promise((resolve, reject) => {
+        //   setTimeout(async () => {
+        //     const response = await axios.get(`https://upload.wikimedia.org/wikipedia/commons/b/b4/JPEG_example_JPG_RIP_100.jpg`,
+        //      {responseType: 'blob'})
+        //     resolve(response)
+        //   }, 2000);
+        // });
+    }
 
     return {
         getTrending,
-        getMemes
+        getMemes,
+        createMeme
     }
 }
